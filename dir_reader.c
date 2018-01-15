@@ -1,15 +1,17 @@
 /*
  * dir_reader.c
- * Чтение каталога
+ * Чтение каталога (функция commander)
  *  Created on: 21.12.2017
  *      Author: jake
  */
 
 #include "add.h"
 
-WINDOW *commander(WINDOW *fwnd,comm *side, DIR *dir,struct dirent *entry)
+WINDOW *commander(WINDOW *fwnd,comm *side)
 {
 	WINDOW *wnd_commander;
+	DIR *dir=NULL;			// указатель на каталог
+	struct dirent *entry; 	// записи в структуре каталога
 
 	switch (side->id){ 		// варианты правого\левого менеджеров файлов
 	case 1: wnd_commander = derwin(fwnd,fwnd->_maxy-2,fwnd->_maxx/2-2,1,fwnd->_maxx/2+1);
