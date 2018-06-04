@@ -35,7 +35,8 @@ WINDOW *commander(WINDOW *fwnd,comm *side)
     else {
     while ( (entry = readdir(dir)) != NULL) {
         wprintw(wnd_commander,"%s [%s]\n",
-            entry->d_name, (entry->d_type==DT_DIR)?"DIR":"file");
+        entry->d_name, (entry->d_type==DT_DIR)?"DIR":"file");
+    	free(entry); // освобождение памяти под структурой
     };closedir(dir);};
 
     curs_set(1);
